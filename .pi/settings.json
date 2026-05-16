@@ -1,23 +1,21 @@
 {
-  "extensions": {
-    "permission-system": {
-      "bashPatterns": {
-        "high": [
-          "^gh\\s+repo\\s+(create|delete|rename|transfer)",
-          "^gh\\s+release\\s+(create|delete|edit)",
-          "^gh\\s+run",
-          "^gh\\s+workflow",
-          "^gh\\s+secret\\s+(set|delete)",
-          "^gh\\s+api\\s+",
-          "^gh\\s+delete"
-        ],
-        "medium": [
-          "^gh\\s+pr\\s+(create|merge|close|review)",
-          "^gh\\s+issue\\s+(create|close|reopen|edit)",
-          "^gh\\s+repo\\s+(fork|clone)",
-          "^gh\\s+gist\\s+(create|edit|delete)"
-        ]
-      }
+  "permission-system": {
+    "bashPatterns": {
+      "high": [
+        "^gh\\s+repo\\s+(create|delete|rename|transfer)",
+        "^gh\\s+release\\s+(create|delete|edit)",
+        "^gh\\s+run",
+        "^gh\\s+workflow",
+        "^gh\\s+secret\\s+(set|delete)",
+        "^gh\\s+api\\s+",
+        "^gh\\s+delete"
+      ],
+      "medium": [
+        "^gh\\s+pr\\s+(create|merge|close|review)",
+        "^gh\\s+issue\\s+(create|close|reopen|edit)",
+        "^gh\\s+repo\\s+(fork|clone)",
+        "^gh\\s+gist\\s+(create|edit|delete)"
+      ]
     }
   }
 }

@@ -3,8 +3,8 @@
  *
  * Loads and merges configuration from:
  *   1. Built-in defaults (types.ts)
- *   2. Global settings (~/.pi/agent/settings.json → extensions.permission-system)
- *   3. Project settings (.pi/settings.json → extensions.permission-system)
+ *   2. Global settings (~/.pi/agent/settings.json → permission-system)
+ *   3. Project settings (.pi/settings.json → permission-system)
  */
 
 import { readFile } from "node:fs/promises";
@@ -46,14 +46,10 @@ async function tryReadSettingsSection(configPath: string): Promise<Partial<Permi
     const content = await readFile(configPath, "utf-8");
     const parsed = JSON.parse(content) as Record<string, unknown>;
 
-    // 从 extensions.permission-system 读取
-    const extensions = parsed.extensions as Record<string, unknown> | undefined;
-    if (extensions?.permissionSystem) {
-      return extensions.permissionSystem as Partial<PermissionConfig>;
-    }
-    // 兼容 camelCase
-    if (extensions?.["permission-system"]) {
-      return extensions["permission-system"] as Partial<PermissionConfig>;
+    // 从 permission-system 根键读取（避免与 pi 的 extensions[] 数组冲突）
+    const rootKey = parsed["permission-system"] as Record<string, unknown> | undefined;
+    if (rootKey) {
+      return rootKey as Partial<PermissionConfig>;
     }
 
     return null;
