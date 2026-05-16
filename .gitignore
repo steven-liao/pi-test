@@ -1,0 +1,6 @@
+node_modules/
+.pi/sessions/
+.pi/extensions/permission-system/node_modules/
+*.exe
+*.o
+*.obj
